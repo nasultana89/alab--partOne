@@ -1,3 +1,27 @@
+// Menu data structure
+var menuLinks = [
+    { text: 'about', href: '/about' },
+    {
+        text: 'catalog', href: '#', subLinks: [
+            { text: 'all', href: '/catalog/all' },
+            { text: 'top selling', href: '/catalog/top' },
+            { text: 'search', href: '/catalog/search' },
+        ]
+    },
+    {
+        text: 'orders', href: '#', subLinks: [
+            { text: 'new', href: '/orders/new' },
+            { text: 'pending', href: '/orders/pending' },
+            { text: 'history', href: '/orders/history' },
+        ]
+    },
+    {
+        text: 'account', href: '#', subLinks: [
+            { text: 'profile', href: '/account/profile' },
+            { text: 'sign out', href: '/account/signout' },
+        ]
+    },
+];
 //step 1
 const mainEl = document.querySelector('main');
 console.log(mainEl);
@@ -20,21 +44,34 @@ topmenuEl.style.backgroundColor = 'var(--top-menu-bg)'
 //step 4 
 topmenuEl.classList = 'flex-around';
 
-// Menu data structure
-var menuLinks = [
-    { text: 'about', href: '/about' },
-    { text: 'catalog', href: '/catalog' },
-    { text: 'orders', href: '/orders' },
-    { text: 'account', href: '/account' },
-];
+//Adding Menu Buttons
+//step 1 
+menuLinks.forEach(function (link) {
+    //step 2
+    let linkEl = document.createElement('a')
+    //step 3
+    linkEl.setAttribute('href', link.href)
+    //step 4 
+    linkEl.textContent = link.text
+    //step 5 
+    topmenuEl.appendChild(linkEl)
+})
 
-// function code(something) {}
-// (something) => {}
-menuLinks.forEach(
-    (buttonLinks) => {
-        const linkElements = document.createElement("a")
-        linkElements.href = buttonLinks.href
-        linkElements.textContent = buttonLinks.text
-        topmenuEl.appendChild(linkElements)
-    }
-)
+// Part 2 
+
+// Creating the Submenu 
+//step 1 
+const subMenuEl = document.getElementById('sub-menu')
+console.log(subMenuEl)
+//step 2
+subMenuEl.style.height = ('100%')
+//step 3 
+subMenuEl.style.backgroundColor = 'var(--sub-menu-bg)'
+//step 4
+subMenuEl.classList = 'flex-around'
+
+//submenu 
+//step 1 
+subMenuEl.style.position = 'absolute'
+//step 2 
+subMenuEl.style.top = '0'
